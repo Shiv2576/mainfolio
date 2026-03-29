@@ -14,15 +14,18 @@ const filteredTech = techList.filter(
   >
     Tech I Love Working With
   </h2>
+
   <div class="flex flex-wrap gap-2 md:gap-3">
     {
       filteredTech.map((tech) => (
-        <div
+        <button
+          type="button"
           class={cn(
-            "magnetic group relative flex cursor-pointer items-center gap-1.5 rounded-lg border border-border bg-secondary/30 px-2.5 py-1.5 transition-all duration-300 hover:border-foreground/20 hover:bg-secondary/60 hover:shadow-sm md:gap-2.5 md:rounded-xl md:py-2 md:pr-3 md:pl-3.5",
+            "magnetic group relative flex items-center gap-1.5 rounded-lg border border-border bg-secondary/30 px-2.5 py-1.5 transition-all duration-300 hover:border-foreground/20 hover:bg-secondary/60 hover:shadow-sm focus:ring-2 focus:ring-foreground/30 focus:outline-none md:gap-2.5 md:rounded-xl md:py-2 md:pr-3 md:pl-3.5",
             tech.hover
           )}
           data-magnetic
+          aria-label={`Technology: ${tech.name}`}
         >
           <Icon
             name={tech.icon}
@@ -30,44 +33,82 @@ const filteredTech = techList.filter(
               "h-4 w-4 shrink-0 transition-transform duration-300 group-hover:scale-110 md:h-5 md:w-5",
               tech.color
             )}
+            aria-hidden="true"
           />
-          <span class="text-xs font-medium tracking-tight text-foreground md:text-sm">
+          <span class="pointer-events-none text-xs font-medium tracking-tight text-foreground md:text-sm">
             {tech.name}
           </span>
-        </div>
+        </button>
       ))
     }
   </div>
 </section>
 
 <script>
-  // Magnetic effect for tech stack items
+  // @ts-nocheck - Simple DOM interaction, no complex typing needed
+  // Magnetic hover effect with cleanup and reduced motion support
   const magneticElements = document.querySelectorAll("[data-magnetic]")
+  const prefersReducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  ).matches
 
-  magneticElements.forEach((element) => {
-    element.addEventListener("mousemove", (e) => {
-      const rect = element.getBoundingClientRect()
-      const x = e.clientX - rect.left
-      const y = e.clientY - rect.top
+  if (!prefersReducedMotion) {
+    magneticElements.forEach((element) => {
+      const onMouseMove = (e) => {
+        const rect = element.getBoundingClientRect()
+        const centerX = rect.width / 2
+        const centerY = rect.height / 2
 
-      const centerX = rect.width / 2
-      const centerY = rect.height / 2
+        // Damped movement for smoother feel
+        const moveX = (e.clientX - rect.left - centerX) * 0.15
+        const moveY = (e.clientY - rect.top - centerY) * 0.15
 
-      const moveX = (x - centerX) / 3
-      const moveY = (y - centerY) / 3
+        element.style.transform = `translate3d(${moveX}px, ${moveY}px, 0)`
+      }
 
-      element.style.transform = `translate(${moveX}px, ${moveY}px)`
+      const onMouseLeave = () => {
+        element.style.transition = "transform 0.2s ease-out"
+        element.style.transform = "translate3d(0, 0, 0)"
+
+        // Clear transition after reset to avoid interfering with next hover
+        setTimeout(() => {
+          element.style.transition = ""
+        }, 200)
+      }
+
+      element.addEventListener("mousemove", onMouseMove)
+      element.addEventListener("mouseleave", onMouseLeave)
+
+      // Store cleanup function for potential reuse
+      element._magneticCleanup = () => {
+        element.removeEventListener("mousemove", onMouseMove)
+        element.removeEventListener("mouseleave", onMouseLeave)
+        delete element._magneticCleanup
+      }
     })
 
-    element.addEventListener("mouseleave", () => {
-      element.style.transform = "translate(0px, 0px)"
+    // Cleanup on page unload to prevent memory leaks
+    window.addEventListener("beforeunload", () => {
+      magneticElements.forEach((el) => {
+        if (el._magneticCleanup) el._magneticCleanup()
+      })
     })
-  })
+  }
 </script>
 
 <style>
   .magnetic {
-    transition: transform 0.2s ease-out;
     will-change: transform;
+    cursor: pointer;
+    transition: transform 0.15s ease-out;
+  }
+
+  /* Respect user preference for reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    .magnetic {
+      transition: none !important;
+      transform: none !important;
+      will-change: auto;
+    }
   }
 </style>

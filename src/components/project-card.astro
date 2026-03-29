@@ -23,11 +23,7 @@ const { project, alternate = false, priority = false }: Props = Astro.props
   )}
 >
   <a
-    href={project.demo ||
-      project.github ||
-      project.huggingface ||
-      project.replicate ||
-      "#"}
+    href={project.demo || project.github || "#"}
     target="_blank"
     rel="noopener noreferrer"
     class="group relative aspect-4/3 w-full min-w-0 flex-1 overflow-hidden rounded-xl border border-border/50 md:h-auto"
@@ -81,34 +77,6 @@ const { project, alternate = false, priority = false }: Props = Astro.props
           >
             <Icon name="lucide:external-link" class="h-4 w-4" />
             <span>Demo</span>
-          </a>
-        )
-      }
-      {
-        project.huggingface && (
-          <a
-            href={project.huggingface}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="flex items-center gap-1.5 rounded-lg border border-border/70 px-2 py-1.5 text-sm font-medium text-muted-foreground transition-colors hover:border-foreground/30 hover:bg-secondary/50 hover:text-foreground"
-            aria-label="View on HuggingFace"
-          >
-            <Icon name="simple-icons:huggingface" class="h-4 w-4" />
-            <span>HuggingFace</span>
-          </a>
-        )
-      }
-      {
-        project.replicate && (
-          <a
-            href={project.replicate}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="flex items-center gap-1.5 rounded-lg border border-border/70 px-2 py-1.5 text-sm font-medium text-muted-foreground transition-colors hover:border-foreground/30 hover:bg-secondary/50 hover:text-foreground"
-            aria-label="View on Replicate"
-          >
-            <Icon name="simple-icons:replicate" class="h-4 w-4" />
-            <span>Replicate</span>
           </a>
         )
       }

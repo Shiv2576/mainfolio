@@ -1,10 +1,11 @@
-import EasyWebsiteBlocker from "@/assets/projects/easy-website-blocker.png"
-import GptFileSmith from "@/assets/projects/gpt-filesmith.png"
-import GptImgCaptioner from "@/assets/projects/gpt-img-captioner.png"
-import NextDay from "@/assets/projects/next-day.png"
-import NextWorkout from "@/assets/projects/next-workout.png"
-import OneDarkModernPro from "@/assets/projects/one-dark-modern-pro.png"
-import UnYellowGPT from "@/assets/projects/unyellow-gpt.png"
+///////
+import disperz from "@/assets/projects/disperz.png"
+import hackernew from "@/assets/projects/hackernew.png"
+import languageApp from "@/assets/projects/languageApp.jpg"
+import logbook from "@/assets/projects/logbook.png"
+import swift from "@/assets/projects/swift.jpg"
+import trace from "@/assets/projects/trace.png"
+import unistream from "@/assets/projects/unistream.png"
 import weave from "@/assets/projects/weave.png"
 
 export const projects = [
@@ -13,8 +14,8 @@ export const projects = [
     description:
       "A Mobile App to learn Mandarin Chinese like a native speaker , with supabase auth , and personlized levels built with Expo.",
     tags: ["Expo", "TypeScript", "Supabase", "OAuth", "Android", "SaaS"],
-    image: UnYellowGPT,
-    demo: "https://unyellowgpt.com",
+    image: languageApp,
+    demo: "",
     github: "https://github.com/Shiv2576/Mandarin-Language-App",
     featured: true,
     category: "Web Apps",
@@ -22,7 +23,7 @@ export const projects = [
   {
     title: "Trace Ai",
     description:
-      "Trace AI is an AI-powered knowledge tool that understands what you're asking and renders the right visual automatically. Type a question in plain English and watch it transform into an interactive graph you can drag, explore, and click through.",
+      "Visulize ur every query from database schema to mindmaps, flowcharts.",
     tags: [
       "Next.js",
       "TypeScript",
@@ -33,9 +34,9 @@ export const projects = [
       "Redis",
       "Gorq",
     ],
-    image: NextDay,
-    github: "https://github.com/Shiv2576/trace-ai",
-    demo: "",
+    image: trace,
+    github: "https://github.com/Shiv2576/trace_ai",
+    demo: "https://res.cloudinary.com/drlckonat/video/upload/v1774801574/Screen_Recording_2026-03-29_at_9.09.16_PM_q3b0eo.mp4",
     category: "Web Apps",
   },
   {
@@ -49,9 +50,9 @@ export const projects = [
       "Firebase Client",
       "Tanstack Query",
     ],
-    image: GptImgCaptioner,
-    github: "https://github.com/aleksa-codes/gpt-flux-img-captioner",
-    demo: "https://gptcaptioner.shiv.dx",
+    image: hackernew,
+    github: "https://github.com/Shiv2576/hn-web",
+    demo: "https://hn-web-five.vercel.app",
     featured: true,
     category: "AI & Tools",
   },
@@ -61,8 +62,9 @@ export const projects = [
       "Convert JPEG images to PDF directly on your device. No internet required, no ads, no uploads — everything stays local.",
     tags: ["Expo", "TypeScript", "React Native", "Android", "Gradle", "Hermes"],
     image: weave,
-    github: "https://github.com/aleksa-codes/easy-website-gpt",
-    demo: " ",
+    github: "https://github.com/Shiv2576/WeaveWeb",
+    demo: "https://weavemobile.netlify.app/",
+    Features: true,
     category: "Browser Extensions",
   },
   {
@@ -77,7 +79,7 @@ export const projects = [
       "ChatGPT",
       "localStorage",
     ],
-    image: NextWorkout,
+    image: unistream,
     github: "https://github.com/aleksa-codes/next-workout",
     demo: "https://nextworkout.aleksa.codes",
     category: "AI & Tools",
@@ -87,9 +89,8 @@ export const projects = [
     description:
       "Creative AI content generator inspired by infinite multiverses. Instantly crafts highly unique, imaginative text and documents with real-time preview and download options.",
     tags: ["Astro", "TailwindCSS", "OpenAI API"],
-    image: GptFileSmith,
-    github: "https://github.com/aleksa-codes/gpt-filesmith",
-    demo: "https://filesmith.aleksa.codes",
+    image: disperz,
+    demo: "https://disperz.netlify.app/",
     category: "AI & Tools",
   },
   {
@@ -97,8 +98,8 @@ export const projects = [
     description:
       "Powerful productivity extension designed to eliminate digital distractions. Features highly customizable block lists and granular exceptions for deep, uninterrupted work sessions.",
     tags: ["React", "TypeScript", "TailwindCSS", "shadcn/ui", "Chrome API"],
-    image: EasyWebsiteBlocker,
-    github: "https://github.com/aleksa-codes/easy-website-blocker",
+    image: logbook,
+    github: "https://logbook-delta-red.vercel.app",
     category: "Browser Extensions",
   },
   {
@@ -112,10 +113,8 @@ export const projects = [
       "Developer Experience",
       "Syntax Highlighting",
     ],
-    image: OneDarkModernPro,
-    github: "https://github.com/aleksa-codes/one-dark-modern-pro",
-    demo: "https://marketplace.visualstudio.com/items?itemName=aleksa-codes.one-dark-modern-pro",
-    featured: true,
+    image: swift,
+    github: "https://github.com/Shiv2576/swift_practice",
     category: "AI & Tools",
   },
 ]
