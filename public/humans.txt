@@ -1,0 +1,15 @@
+/* TEAM */
+Developer: Shivang
+Site: https://aleksa.codes
+Email: hello [at] dixitshiva12358@gmail.com
+GitHub: https://github.com/Shiv2576/mainfolio
+
+/* SITE */
+Last update: 2026/02/28
+Standards: TypeScript, Astro, Tailwind CSS
+Components: Astro components
+Software: VS Code, Bun, GitHub Copilot, AI Studio, OpenCode
+Hosting: Netlify
+
+/* THANKS */
+Thanks to the Astro community for making this awesome framework!

@@ -1,0 +1,106 @@
+---
+import { Icon } from "astro-icon/components"
+import Card from "@/components/ui/card.astro"
+import GitHubActivity from "@/components/github-activity.astro"
+import { cn } from "@/lib/utils"
+import Link from "@/components/link.astro"
+
+const funFacts = [
+  {
+    icon: "lucide:brain-circuit",
+    text: "Building things with AI & code",
+    color: "text-pink-500",
+  },
+  {
+    icon: "iconoir:basketball",
+    text: "Love hooping & watching NBA",
+    color: "text-orange-500",
+  },
+  {
+    icon: "lucide:gamepad-2",
+    text: "Casual gamer in my free time",
+    color: "text-blue-500",
+  },
+  {
+    icon: "lucide:coffee",
+    text: "Fueled by coffee & curiosity",
+    color: "text-amber-700 dark:text-amber-500",
+  },
+]
+---
+
+<section id="about" class="flex flex-col space-y-8">
+  <h2
+    class="text-sm font-medium tracking-widest text-muted-foreground uppercase"
+  >
+    About Me
+  </h2>
+
+  <div class="space-y-5 text-base leading-relaxed text-foreground">
+    <p class="animate">
+      I am a Web and Mobile Developer specializing in Expo and React Native. I
+      am an currently working on
+      <Link
+        href="https://github.com/Shiv2576/trace_ai"
+        aria-label="Astro Sphere on Github"
+        external
+      >
+        Trace Ai
+      </Link>. I have a lighthouse scores of 95+ across the board for
+      performance, accessibility, best practices and SEO.
+    </p>
+    <p class="animate">
+      I have worked with 3 fast paced startups building web and mobile apps , in
+      TypeScript, React, and Expo. Currently working as a React Native Developer
+      as Part-time employee.
+    </p>
+    <p class="animate">Here are my past work experiences and projects.</p>
+  </div>
+
+  <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+    <Card class="h-full" contentClass="flex flex-col h-full">
+      <h3
+        class="mb-4 flex shrink-0 items-center gap-2.5 text-base font-semibold text-foreground"
+      >
+        <Icon name="lucide:terminal" class="h-5 w-5 text-green-500" /> whoami
+      </h3>
+      <div class="grid flex-1 grid-cols-2 gap-3">
+        {
+          funFacts.map((fact) => (
+            <div class="flex flex-col items-center justify-center gap-2.5 rounded-xl border border-border bg-secondary/30 p-4 text-center transition-colors hover:bg-secondary/50">
+              <Icon
+                name={fact.icon}
+                class={cn("h-6 w-6 shrink-0", fact.color)}
+              />
+              <p class="text-sm leading-snug font-medium tracking-tight text-muted-foreground">
+                {fact.text}
+              </p>
+            </div>
+          ))
+        }
+      </div>
+    </Card>
+
+    <Card class="h-full" contentClass="flex flex-col h-full relative group">
+      <h3
+        class="mb-4 flex shrink-0 items-center justify-between gap-2.5 text-base font-semibold text-foreground"
+      >
+        <div class="flex items-center gap-2.5">
+          <Icon name="lucide:github" class="h-5 w-5 text-green-500" /> GitHub Activity
+        </div>
+        <a
+          href="https://github.com/Shiv2576"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-muted-foreground transition-colors hover:text-foreground"
+          aria-label="View GitHub Profile"
+        >
+          <Icon name="lucide:external-link" class="h-5 w-5" />
+        </a>
+      </h3>
+      <div class="flex flex-1 flex-col gap-3">
+        <GitHubActivity />
+      </div>
+    </Card>
+  </div>
+</section>

@@ -1,0 +1,73 @@
+---
+import { Icon } from "astro-icon/components"
+import { techList } from "@/lib/tech"
+import { cn } from "@/lib/utils"
+
+const filteredTech = techList.filter(
+  (tech) => !["Supabase", "Neon"].includes(tech.name)
+)
+---
+
+<section id="tech-stack" class="flex flex-col space-y-5 md:space-y-8">
+  <h2
+    class="text-sm font-medium tracking-widest text-muted-foreground uppercase"
+  >
+    Tech I Love Working With
+  </h2>
+  <div class="flex flex-wrap gap-2 md:gap-3">
+    {
+      filteredTech.map((tech) => (
+        <div
+          class={cn(
+            "magnetic group relative flex cursor-pointer items-center gap-1.5 rounded-lg border border-border bg-secondary/30 px-2.5 py-1.5 transition-all duration-300 hover:border-foreground/20 hover:bg-secondary/60 hover:shadow-sm md:gap-2.5 md:rounded-xl md:py-2 md:pr-3 md:pl-3.5",
+            tech.hover
+          )}
+          data-magnetic
+        >
+          <Icon
+            name={tech.icon}
+            class={cn(
+              "h-4 w-4 shrink-0 transition-transform duration-300 group-hover:scale-110 md:h-5 md:w-5",
+              tech.color
+            )}
+          />
+          <span class="text-xs font-medium tracking-tight text-foreground md:text-sm">
+            {tech.name}
+          </span>
+        </div>
+      ))
+    }
+  </div>
+</section>
+
+<script>
+  // Magnetic effect for tech stack items
+  const magneticElements = document.querySelectorAll("[data-magnetic]")
+
+  magneticElements.forEach((element) => {
+    element.addEventListener("mousemove", (e) => {
+      const rect = element.getBoundingClientRect()
+      const x = e.clientX - rect.left
+      const y = e.clientY - rect.top
+
+      const centerX = rect.width / 2
+      const centerY = rect.height / 2
+
+      const moveX = (x - centerX) / 3
+      const moveY = (y - centerY) / 3
+
+      element.style.transform = `translate(${moveX}px, ${moveY}px)`
+    })
+
+    element.addEventListener("mouseleave", () => {
+      element.style.transform = "translate(0px, 0px)"
+    })
+  })
+</script>
+
+<style>
+  .magnetic {
+    transition: transform 0.2s ease-out;
+    will-change: transform;
+  }
+</style>

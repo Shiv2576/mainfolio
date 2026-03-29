@@ -1,0 +1,81 @@
+---
+import { Icon } from "astro-icon/components"
+import ThemeToggle from "@/components/theme-toggle.astro"
+import Tooltip from "@/components/ui/tooltip.astro"
+import SnowToggle from "./snow-toggle.astro"
+
+const links = [
+  {
+    href: "https://github.com/Shiv2576",
+    icon: "lucide:github",
+    label: "GitHub",
+    target: "_blank",
+  },
+  {
+    href: "/Aleksa_Resume_2026.pdf",
+    icon: "lucide:file-text",
+    label: "Resume",
+    target: "_blank",
+  },
+  { href: "/rss.xml", icon: "lucide:rss", label: "RSS Feed" },
+]
+---
+
+<header
+  class="fixed top-0 left-0 z-40 w-full border-b border-border bg-background/70 backdrop-blur-xl"
+>
+  <div class="container flex h-16 items-center justify-between">
+    <a
+      href="/"
+      class="flex items-center font-mono text-lg font-medium text-foreground transition-opacity hover:opacity-80"
+      aria-label="Home"
+    >
+      <span id="typewriter">shiv.dx</span><span
+        class="ml-1.5 h-[1.1em] w-0.5 animate-blink bg-current align-text-bottom"
+      ></span>
+    </a>
+
+    <div class="flex items-center gap-1 md:gap-3">
+      {
+        links.map(({ href, icon, label, target }) => (
+          <Tooltip content={label}>
+            <a
+              {href}
+              {target}
+              aria-label={label}
+              class="rounded-xl p-2.5 text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
+            >
+              <Icon name={icon} class="h-5 w-5" />
+            </a>
+          </Tooltip>
+        ))
+      }
+
+      <div class="mx-1 h-6 w-px bg-border md:mx-2"></div>
+      <SnowToggle />
+      <ThemeToggle />
+    </div>
+  </div>
+</header>
+
+<script>
+  // IIFE to keep scope clean
+  ;(() => {
+    const el = document.getElementById("typewriter")
+    if (!el) return
+
+    const text = el.textContent || ""
+    el.textContent = "" // Clear for animation
+
+    let i = 0
+    const type = () => {
+      if (i < text.length) {
+        el.textContent += text[i++]
+        setTimeout(type, 120)
+      }
+    }
+
+    // Slight delay before starting for a better feel
+    setTimeout(type, 400)
+  })()
+</script>

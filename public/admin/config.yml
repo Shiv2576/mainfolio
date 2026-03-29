@@ -1,0 +1,38 @@
+backend:
+  name: git-gateway # or test-repo
+  branch: main
+  squash_merges: true
+
+local_backend: true
+
+media_folder: "src/assets/blog"
+public_folder: "../../assets/blog"
+
+# Site URL for preview
+site_url: https://aleksa.codes
+display_url: https://aleksa.codes
+
+collections:
+  - name: "blog"
+    label: "Blog"
+    folder: "src/content/blog"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Author", name: "author", widget: "string", default: "Aleksa" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - {
+          label: "Tags",
+          name: "tags",
+          widget: "list",
+          default: ["Development"],
+        }
+      - {
+          label: "Featured Image",
+          name: "thumbnail",
+          widget: "image",
+          required: false,
+        }
+      - { label: "Body", name: "body", widget: "markdown" }

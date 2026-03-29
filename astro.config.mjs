@@ -1,0 +1,72 @@
+import netlify from "@astrojs/netlify"
+import sitemap from "@astrojs/sitemap"
+import playformCompress from "@playform/compress"
+import tailwindcss from "@tailwindcss/vite"
+import expressiveCode from "astro-expressive-code"
+import icon from "astro-icon"
+import { defineConfig } from "astro/config"
+import { targetBlank } from "./src/lib/target-blank"
+
+const SITE = import.meta.env.PROD
+  ? "https://aleksa.codes"
+  : "http://localhost:3000"
+
+// https://astro.build/config
+export default defineConfig({
+  site: SITE,
+  server: {
+    port: 3000,
+  },
+  image: {
+    // Generate srcset for all <Image> components so browsers download the right size.
+    // responsiveStyles is intentionally left false (default) — Tailwind 4 handles sizing.
+    layout: "constrained",
+  },
+  // build: {
+  //   inlineStylesheets: 'always',
+  // },
+  adapter: netlify({
+    imageCDN: false,
+  }),
+  markdown: {
+    rehypePlugins: [[targetBlank, { domain: SITE }]],
+  },
+  vite: {
+    plugins: [tailwindcss()],
+  },
+  integrations: [
+    expressiveCode({
+      themes: ["one-dark-pro", "one-light"],
+      themeCssSelector: (theme) =>
+        theme.name === "one-dark-pro" ? ".dark" : ":root:not(.dark)",
+      styleOverrides: {
+        codeFontFamily:
+          'var(--font-mono), SF Mono, SF Mono-Regular, Consolas, "Liberation Mono", Menlo, Courier, monospace',
+        frames: {
+          frameBoxShadowCssValue:
+            "0 0 0 1px var(--border), 0 2px 4px -1px var(--shadow)",
+          tooltipSuccessBackground: "var(--foreground)",
+          tooltipSuccessForeground: "var(--background)",
+        },
+      },
+    }),
+    icon(),
+    sitemap({
+      filter(page) {
+        return !page.startsWith(`${SITE}/admin`)
+      },
+    }),
+    playformCompress({
+      HTML: {
+        "html-minifier-terser": {
+          removeAttributeQuotes: false,
+        },
+      },
+      CSS: true,
+      JavaScript: true,
+      Image: false,
+      SVG: false,
+      Logger: 1,
+    }),
+  ],
+})
