@@ -100,34 +100,23 @@ async function fetchAllRepos(username: string): Promise<GithubRepo[]> {
 
 // ── Public API ───────────────────────────────────────────────────────────────
 
-export async function getGithubStats(
-  username: string
-): Promise<GithubStatsResult> {
+export async function getGithubStats(username: string) {
   try {
-    const [user, repos] = await Promise.all([
-      ghJson<GithubUser>(`/users/${username}`),
-      fetchAllRepos(username),
-    ])
+    const res = await fetch(
+      `https://github-contributions-api.jogruber.de/v4/${username}?y=last`
+    )
 
-    // Filter out forks — GitHub's profile page excludes them from the star count
-    const ownRepos = repos.filter((r) => !r.fork)
+    if (!res.ok) throw new Error("Failed")
+
+    const json = await res.json()
 
     return {
       ok: true,
       data: {
-        followers: user.followers ?? 0,
-        // public_repos includes forks; subtract to match GitHub profile display
-        publicRepos: ownRepos.length,
-        totalStars: ownRepos.reduce(
-          (acc, r) => acc + (r.stargazers_count ?? 0),
-          0
-        ),
+        contributions: json.contributions || [],
       },
     }
-  } catch (err) {
-    return {
-      ok: false,
-      error: err instanceof Error ? err.message : "Unknown error",
-    }
+  } catch {
+    return { ok: false }
   }
 }

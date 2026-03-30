@@ -1,6 +1,6 @@
 /* TEAM */
 Developer: Shivang
-Site: https://aleksa.codes
+Site: https://shivdx.vercel.app/
 Email: hello [at] dixitshiva12358@gmail.com
 GitHub: https://github.com/Shiv2576/mainfolio
 

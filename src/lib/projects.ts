@@ -80,8 +80,8 @@ export const projects = [
       "localStorage",
     ],
     image: unistream,
-    github: "https://github.com/aleksa-codes/next-workout",
-    demo: "https://nextworkout.aleksa.codes",
+    github: "https://github.com/Shiv2576/UniStream",
+    demo: "https://unistream2.netlify.app/",
     category: "AI & Tools",
   },
   {

@@ -5,7 +5,7 @@ interface Props {
   username?: string
 }
 
-const { username = "aleksa-codes" } = Astro.props
+const { username = "Shiv2576" } = Astro.props
 
 const result = await getGithubStats(username)
 const stats = result.ok ? result.data : null
@@ -65,9 +65,7 @@ const iconClass = "h-4 w-4 text-muted-foreground/70"
             >
               <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
             </svg>
-            <div class="text-xl leading-none font-bold text-foreground">
-              {stats.totalStars}
-            </div>
+            <div class="text-xl leading-none font-bold text-foreground">12</div>
           </div>
           <div class="text-[11px] font-semibold tracking-widest text-muted-foreground uppercase">
             Stars

@@ -25,7 +25,7 @@ That's exactly what this theme is:
 If you've been theme-hopping and can't find something that nails both syntax colors and a clean UI, maybe this is the one.
 
 🔗 [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=aleksa-codes.one-dark-modern-pro)\
-🔗 [GitHub Repo](https://github.com/aleksa-codes/one-dark-modern-pro)
+🔗 [GitHub Repo](https://github.com/Shiv2576/mainfolio)
 
 ## Font and icon recommendations
 

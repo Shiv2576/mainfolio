@@ -8,7 +8,7 @@ import { defineConfig } from "astro/config"
 import { targetBlank } from "./src/lib/target-blank"
 
 const SITE = import.meta.env.PROD
-  ? "https://aleksa.codes"
+  ? "https://shivdx.vercel.app/"
   : "http://localhost:3000"
 
 // https://astro.build/config

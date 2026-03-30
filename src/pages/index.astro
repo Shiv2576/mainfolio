@@ -8,9 +8,9 @@ import TechStack from "@/components/tech-stack.astro"
 
 <BaseLayout>
   <div class="flex flex-col gap-24 md:gap-32">
-    <Hero />
-    <About />
-    <TechStack />
-    <Projects />
+    <div class="fade-up" style="--delay: 0ms"><Hero /></div>
+    <div class="fade-up" style="--delay: 100ms"><About /></div>
+    <div class="fade-up" style="--delay: 200ms"><TechStack /></div>
+    <div class="fade-up" style="--delay: 300ms"><Projects /></div>
   </div>
 </BaseLayout>

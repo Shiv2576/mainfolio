@@ -1,15 +1,17 @@
-import { createGroq } from "@ai-sdk/groq"
+import { createOpenRouter } from "@openrouter/ai-sdk-provider"
 import { Output, smoothStream, streamText, type ModelMessage } from "ai"
 import type { APIRoute } from "astro"
 import { z } from "zod"
 
 export const prerender = false
 
-const groq = createGroq({
-  apiKey: import.meta.env.GROQ_API_KEY,
+const openrouter = createOpenRouter({
+  apiKey: import.meta.env.OPENROUTER_API_KEY,
 })
 
-const model = groq("openai/gpt-oss-120b")
+// openrouter/free auto-picks from all available free models.
+// It filters for structured output support — no more 404s from unavailable models.
+const model = openrouter("openrouter/free")
 
 const chatResponseSchema = z.object({
   response: z.string().describe("The main response text in markdown format"),
@@ -100,7 +102,6 @@ Minimal note-taking app for developers with markdown support, code highlighting,
 
 ### AI Prompt Studio
 Mobile-first tool for crafting, testing, and organizing AI prompts. Features local storage, export options, and integration with popular LLM APIs.
-
 
 ### shivang.dev (This Website)
 Personal portfolio and blog built with Astro for peak performance and SEO. Features this AI assistant, dark mode, and mobile-optimized navigation.

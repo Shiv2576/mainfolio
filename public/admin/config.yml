@@ -9,8 +9,8 @@ media_folder: "src/assets/blog"
 public_folder: "../../assets/blog"
 
 # Site URL for preview
-site_url: https://aleksa.codes
-display_url: https://aleksa.codes
+site_url: https://shivdx.vercel.app/
+display_url: https://shivdx.vercel.app
 
 collections:
   - name: "blog"
