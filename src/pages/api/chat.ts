@@ -62,11 +62,9 @@ These days, he focuses on shipping production-ready apps with Expo, React Native
 
 ## Contact & Links
 
-- **Email:** hello@shivang.dev
-- **GitHub:** https://github.com/shivang-dev
-- **Discord:** https://discordapp.com/users/YOUR_DISCORD_ID
-- **Resume/CV:** https://shivang.dev/Shivang_Resume_2026.pdf
-- **Website:** https://shivang.dev
+- **Email:** dixitshiva12358@gmail.com
+- **GitHub:** https://github.com/Shiv2576
+- **Website:** https://shivdx.vercel.app
 
 *(Replace placeholder values with your actual links)*
 
@@ -87,29 +85,25 @@ These days, he focuses on shipping production-ready apps with Expo, React Native
 
 ### Expo Starter Pro
 Production-ready Expo starter with authentication, navigation, theming, and CI/CD preconfigured. Saves weeks of setup time for new mobile apps.
-- **GitHub:** https://github.com/shivang-dev/expo-starter-pro
+- **GitHub:** https://github.com/Shiv2576
 - **Stack:** Expo, React Native, TypeScript, NativeWind, DrizzleORM, Supabase
 
 ### TaskFlow Mobile
 Cross-platform productivity app with offline-first sync, real-time updates, and gesture-based interactions. Built with Expo and optimized for both iOS and Android.
 - **Live:** https://taskflow.shivang.dev
-- **GitHub:** https://github.com/shivang-dev/taskflow-mobile
+- **GitHub:** https://github.com/Shiv2576
 - **Stack:** Expo, React Native, Expo Router, TanStack Query, Supabase
 
 ### DevNotes
 Minimal note-taking app for developers with markdown support, code highlighting, and cloud sync. Designed for speed and simplicity.
-- **Live:** https://devnotes.shivang.dev
 - **Stack:** Next.js, React Native, Expo, TailwindCSS, Supabase
 
 ### AI Prompt Studio
 Mobile-first tool for crafting, testing, and organizing AI prompts. Features local storage, export options, and integration with popular LLM APIs.
-- **GitHub:** https://github.com/shivang-dev/ai-prompt-studio
-- **Stack:** Expo, React Native, OpenAI API, AsyncStorage
+
 
 ### shivang.dev (This Website)
 Personal portfolio and blog built with Astro for peak performance and SEO. Features this AI assistant, dark mode, and mobile-optimized navigation.
-- **Live:** https://shivang.dev
-- **GitHub:** https://github.com/shivang-dev/portfolio
 
 *(Add or replace projects with your actual work — keep descriptions outcome-focused and stack-transparent)*
 
