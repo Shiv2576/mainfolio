@@ -1,3 +1,5 @@
+//src/pages/open-graph/[...route].ts
+
 import { OGImageRoute } from "astro-og-canvas"
 import { getCollection } from "astro:content"
 
@@ -39,38 +41,55 @@ export const { getStaticPaths, GET } = await OGImageRoute({
     ),
   },
 
-  getImageOptions: (_path, page) => ({
-    title: page.title,
-    description: page.description,
-    logo: {
-      path: "./src/assets/logo-192x192.png",
-      size: [80],
-    },
-    font: {
-      title: {
-        size: 64,
-        families: ["Geist"],
-        weight: "Bold",
-        color: [15, 23, 42], // slate-900
+  getImageOptions: (path, page) => {
+    const isBlog = path.startsWith("blog/")
+
+    return {
+      title: page.title,
+      description: page.description,
+
+      overlay: {
+        color: [0, 0, 0],
+        opacity: 0.35,
       },
-      description: {
-        size: 32,
-        families: ["Geist"],
-        color: [100, 116, 139], // slate-500
+
+      logo: {
+        path: "./src/assets/logo-192x192.png",
+        size: [70],
       },
-    },
-    fonts: [
-      "https://api.fontsource.org/v1/fonts/geist/latin-400-normal.ttf",
-      "https://api.fontsource.org/v1/fonts/geist/latin-700-normal.ttf",
-    ],
-    bgGradient: [
-      [248, 250, 252], // slate-50
-      [241, 245, 249], // slate-100
-    ],
-    border: {
-      color: [15, 23, 42], // slate-900
-      width: 12,
-      side: "inline-start",
-    },
-  }),
+
+      font: {
+        title: {
+          size: isBlog ? 56 : 64,
+          families: ["Geist"],
+          weight: "Bold",
+          color: [255, 255, 255], // white (better contrast)
+        },
+        description: {
+          size: 28,
+          families: ["Geist"],
+          color: [220, 220, 220],
+        },
+      },
+
+      fonts: [
+        "https://api.fontsource.org/v1/fonts/geist/latin-400-normal.ttf",
+        "https://api.fontsource.org/v1/fonts/geist/latin-700-normal.ttf",
+      ],
+
+      // 👇 fallback gradient if no image
+      bgGradient: [
+        [15, 23, 42], // slate-900
+        [30, 41, 59], // slate-800
+      ],
+
+      padding: 80,
+
+      border: {
+        color: [255, 255, 255],
+        width: 6,
+        side: "inline-start",
+      },
+    }
+  },
 })
