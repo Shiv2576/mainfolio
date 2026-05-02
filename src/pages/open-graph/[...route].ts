@@ -8,7 +8,7 @@ export const { getStaticPaths, GET } = await OGImageRoute({
 
   pages: {
     index: {
-      title: "aleksa.codes",
+      title: "shiv.dx",
       description:
         "Computer Science graduate and web developer specializing in performance optimization, clean UI design, and scalable architecture. Explore my work and get in touch.",
     },
